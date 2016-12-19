@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <!-- Don't forget to load angularjs! -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+    <!-- Our application/controller definitions -->
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+	<meta charset="utf-8"/>
+	<meta name="msapplication-TileImage" content="assets/img/ui/app/144.png">
+	<meta name="msapplication-TileColor" content="#E0EBE8">
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+  
+  
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/img/ui/app/144.png">
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="assets/img/ui/app/120.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/img/ui/app/72.png">
+	<link rel="apple-touch-icon-precomposed" href="assets/img/ui/app/57.png">
+	<link rel="icon" type="image/png" href="favicon.png">
+	
+	<link rel="stylesheet" href="assets/css/bootstrap.css" />
+	
+	<script type="text/javascript" src="use.typekit.net/wdj6cpr.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	
+	<script src="assets/js/respond.min.js"></script>
+	<script src="assets/js/modernizr.js"></script>
+
+</head>
+<body>
+
+
+<script type="text/ng-template" id="detail.html">
+    <p>You're on Page 2</p>
+    
+     <a href="" ng-click="doSomethingAndChangeRoute()">Do something and change route...</a> 
+</script>
+
+<section id="top">
+
+		<header id="home-top" class="nav-top nav-fixed nav-root">
+		
+			<div class="container">
+			
+				<div class="row">
+				
+					<div class="col-md-4 col-xs-4">
+					
+						<h1 id="header-logo" class="image-text">
+						
+							<a href="index.html">
+								<span class="mask"></span>
+								<span class="behind"></span>
+								
+								<i class=""></i>
+							</a>
+							
+						</h1>
+						
+					</div>
+					
+					<div class="col-md-8 col-xs-8">
+					
+						<nav id="top-nav">
+							<ul class="nav-list transistion">
+								<li><a href="index.html">A</a></li>
+								<li><a href="work.html">W</a></li>
+								<li><a class="active" href="notes.html">N</a></li>													
+							</ul>
+						</nav>
+					
+					</div> <!-- 12 -->
+				
+				</div> <!-- / row -->
+						
+			</div> <!--/ container -->
+		</header>		
+	</section>
+	
+	
+
+	
+	
+<div ng-controller="ArtistsController"  class="container">
+
+<div class="row" style="margin-left: 23%;">
+    <center><h2>Notes</h2></center>
+  <center><p>Click on the Notes</p></center>
+   
+
+
+   <div class="col-md-4"  ng-repeat="artist in artists | startFrom:currentPage*pageSize |  limitTo:pageSize">
+
+     <a href="" ng-click="goto_detail(artist)">
+      <div class="thumbnail">
+          <img src="{{artist.image}}"  alt="Pulpit Rock" onload="fadeImg(this);  style="width:100%">
+          <div class="caption">
+          <center>  <p>{{artist.artistName}}{{artist.artistId}}</p></center>
+          </div>
+      </div>
+	  </a>
+    </div>
+	<center>        
+    <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+        Previous
+    </button>
+    
+    {{currentPage+1}}/{{artists.length/pageSize}}
+    <button ng-disabled="currentPage >= artists.length/pageSize - 1" ng-click="currentPage=currentPage+1">
+        Next
+    </button>
+    </center>
+  </div>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+	
+</body>
+</html>
